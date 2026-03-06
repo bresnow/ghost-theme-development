@@ -1,0 +1,13 @@
+# Environment
+.env
+
+# Dependencies
+node_modules/
+themes/*/node_modules/
+
+# Vite build output
+themes/*/assets/built/
+
+# OS
+.DS_Store
+Thumbs.db

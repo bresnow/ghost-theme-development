@@ -1,0 +1,22 @@
+{
+  "name": "ghost-theme-workspace",
+  "private": true,
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild"]
+  },
+  "scripts": {
+    "dev": "pnpm -r --parallel dev",
+    "dev:source": "pnpm --filter source dev",
+    "dev:theme-one": "pnpm --filter theme-one dev",
+    "dev:theme-two": "pnpm --filter theme-two dev",
+    "build": "pnpm -r build",
+    "build:source": "pnpm --filter source build",
+    "build:theme-one": "pnpm --filter theme-one build",
+    "build:theme-two": "pnpm --filter theme-two build",
+    "lint": "pnpm -r lint",
+    "lint:source": "pnpm --filter source lint",
+    "lint:theme-one": "pnpm --filter theme-one lint",
+    "lint:theme-two": "pnpm --filter theme-two lint",
+    "gen:readmes": "for dir in themes/*/; do name=$(basename \"$dir\"); sed \"s/{{THEME_NAME}}/$name/g\" docs/THEME-README.template.md > \"$dir/README.md\"; done"
+  }
+}
