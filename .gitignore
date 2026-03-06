@@ -1,9 +1,13 @@
 # Environment
 .env
 
+# Docker Data
+data
+
 # Dependencies
 node_modules/
 themes/*/node_modules/
+.pnpm-store/
 
 # Vite build output
 themes/*/assets/built/

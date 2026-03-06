@@ -2,11 +2,12 @@
 
 ## Initial setup (once)
 
-1. Copy the environment file and start services:
+1. Copy the environment file and start all services:
    ```bash
    cp .env.example .env
    docker compose up -d
    ```
+   This starts three services: **db** (MySQL), **ghost** (Ghost 6), and **dev** (Node 22 running Vite watch).
 
 2. Wait ~30 seconds for MySQL to initialize:
    ```bash
@@ -14,12 +15,13 @@
    ```
    Wait until you see "ready for connections".
 
-3. Install dependencies:
+3. Wait for the dev service to install dependencies and start watching:
    ```bash
-   pnpm install
+   docker compose logs -f dev
    ```
+   Wait until you see "watching for file changes".
 
-4. Visit http://localhost:2380/ghost and complete the Ghost setup wizard (create your admin account).
+4. Visit http://localhost:2368/ghost and complete the Ghost setup wizard (create your admin account).
 
 5. Go to Settings > Design > Change theme > Activate **theme-one** (or whichever theme you want to work on).
 
@@ -29,21 +31,13 @@
    ```bash
    docker compose up -d
    ```
+   The dev service automatically runs `pnpm dev` (Vite watch on all themes).
 
-2. Start Vite in watch mode for your theme:
-   ```bash
-   pnpm dev:theme-one
-   ```
-   This runs `vite build --watch`, which rebuilds `assets/built/` on every source change.
+2. **Edit `.hbs` files** — Ghost's native livereload detects changes and auto-refreshes the browser.
 
-3. **Edit `.hbs` files** — Ghost's native livereload detects changes and auto-refreshes the browser.
+3. **Edit `.css` / `.js` files** — Vite (in the dev container) rebuilds `assets/built/`, then Ghost livereload picks up the new files and refreshes the browser.
 
-4. **Edit `.css` / `.js` files** — Vite rebuilds the bundle in `assets/built/`, then Ghost livereload picks up the new files and refreshes the browser.
-
-5. **Validate your theme**:
-   ```bash
-   pnpm lint:theme-one
-   ```
+4. **Monitor builds**: `docker compose logs -f dev`
 
 ## Adding a new theme
 
@@ -57,29 +51,20 @@
    "name": "your-theme-name"
    ```
 
-3. Add a bind mount in `docker-compose.yml` under the ghost service volumes:
+3. Add volumes in `docker-compose.yml` under the ghost service:
    ```yaml
+   # Theme bind mount
    - ./themes/your-theme-name:/var/lib/ghost/content/themes/your-theme-name
+   # Hide node_modules from Ghost's chown
+   - /var/lib/ghost/content/themes/your-theme-name/node_modules
    ```
 
-4. Add dev/build/lint scripts in the root `package.json`:
-   ```json
-   "dev:your-theme-name": "pnpm --filter your-theme-name dev",
-   "build:your-theme-name": "pnpm --filter your-theme-name build",
-   "lint:your-theme-name": "pnpm --filter your-theme-name lint"
-   ```
-
-5. Register the new workspace package:
+4. Restart all services to pick up the new bind mount and workspace package:
    ```bash
-   pnpm install
+   docker compose down && docker compose up -d
    ```
 
-6. Restart Ghost to pick up the new bind mount:
-   ```bash
-   docker compose restart ghost
-   ```
-
-7. Activate the theme in Ghost Admin: Settings > Design > Change theme.
+5. Activate the theme in Ghost Admin: Settings > Design > Change theme.
 
 ## Using gscan
 

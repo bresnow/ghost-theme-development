@@ -5,40 +5,40 @@ Multi-theme Ghost CMS development environment using Docker, pnpm workspaces, and
 ## Prerequisites
 
 - **Docker Desktop** (or Docker Engine + Compose plugin)
-- **pnpm v8+** (`npm install -g pnpm` or `corepack enable`)
-- **Node.js 20+**
+
+No local Node.js or pnpm required — theme compilation runs inside Docker.
 
 ## Quick Start
 
 ```bash
 cp .env.example .env
 docker compose up -d
-pnpm install
-pnpm dev:theme-one
 ```
+
+That's it. Three services start automatically:
+- **db** — MySQL 8.0
+- **ghost** — Ghost 6 at http://localhost:2368
+- **dev** — Node 22 running `pnpm dev` (Vite watch on all themes)
 
 ## First-Run Steps (required once)
 
 1. Wait ~30 seconds for MySQL to initialize
    - Check: `docker compose logs -f db` — wait for "ready for connections"
-2. Visit http://localhost:2380/ghost
-3. Complete the Ghost setup wizard (create your admin account)
-4. Settings > Design > Change theme > Activate **theme-one**
-5. Visit http://localhost:2380 — your theme is live
+2. Wait for the dev service to finish installing dependencies
+   - Check: `docker compose logs -f dev` — wait for "watching for file changes"
+3. Visit http://localhost:2368/ghost
+4. Complete the Ghost setup wizard (create your admin account)
+5. Settings > Design > Change theme > Activate **theme-one**
+6. Visit http://localhost:2368 — your theme is live
 
 ## Development Commands
 
 | Command | What it does |
 |---|---|
-| `pnpm dev:source` | Watch + rebuild Source theme assets only |
-| `pnpm dev:theme-one` | Watch + rebuild theme-one assets only |
-| `pnpm dev:theme-two` | Watch + rebuild theme-two assets only |
-| `pnpm dev` | Watch + rebuild all themes in parallel |
-| `pnpm build` | Production build all themes |
-| `pnpm lint:theme-one` | Run gscan on theme-one |
-| `pnpm lint` | Run gscan on all themes |
+| `docker compose up -d` | Start everything (db, ghost, dev watcher) |
+| `docker compose logs -f dev` | Watch Vite build output |
 | `docker compose logs -f ghost` | Tail Ghost logs |
-| `docker compose down` | Stop (data persists in named volumes) |
+| `docker compose down` | Stop (data persists in local volumes) |
 | `docker compose down -v` | Stop AND delete all volume data |
 
 ## Themes
@@ -72,5 +72,5 @@ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for detailed explanations of ev
 
 - **Ghost fails to start / can't connect to db:** MySQL is still initializing. Check `docker compose logs db`. The healthcheck retries 10x over ~90 seconds.
 - **Theme not appearing in Ghost Admin:** Verify the bind mount path in docker-compose.yml matches the directory name under `themes/`. Restart ghost: `docker compose restart ghost`
-- **CSS/JS changes not reflected:** Confirm `pnpm dev:theme-name` is running and Vite is rebuilding (watch its terminal output). Check that `assets/built/` is populated.
+- **CSS/JS changes not reflected:** Check `docker compose logs -f dev` to confirm Vite is watching and rebuilding. Check that `assets/built/` is populated.
 - **gscan errors:** Check [docs/THEME-DEVELOPMENT.md](docs/THEME-DEVELOPMENT.md) for required .hbs files. The most common error is a missing `error.hbs` or invalid `{{content}}` usage.
