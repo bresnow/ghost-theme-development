@@ -12,7 +12,10 @@ No local Node.js or pnpm required — theme compilation runs inside Docker.
 
 ```bash
 cp .env.example .env
-docker compose up -d
+docker compose up
+# first time setup - http://localhost:2368/ghost
+# then select your local theme in the admin section
+# http://localhost:2368/ghost/#/settings/design/change-theme
 ```
 
 That's it. Three services start automatically:
