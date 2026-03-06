@@ -72,7 +72,7 @@ gscan is Ghost's official theme validator. It checks your theme against the Ghos
 
 ```bash
 # Validate a specific theme
-pnpm lint:theme-one
+pnpm --filter theme-one lint
 
 # Validate all themes
 pnpm lint
@@ -106,7 +106,7 @@ cd themes/theme-one && npx gscan . --verbose
 
 ```bash
 # Build a specific theme
-pnpm build:theme-one
+pnpm --filter theme-one build
 
 # Build all themes
 pnpm build

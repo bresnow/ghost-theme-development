@@ -33,7 +33,7 @@ This means **no additional livereload tooling is needed** — no browser extensi
 
 The `dev` service (`node:22-alpine`) runs `pnpm dev` inside Docker so developers don't need Node.js or pnpm installed locally. It uses corepack (bundled with Node 22) to bootstrap pnpm, installs workspace dependencies, then runs `vite build --watch` on all themes.
 
-A named volume (`dev_node_modules`) mounts over `/workspace/node_modules` inside the container. This prevents pnpm's symlinked content-addressable store from leaking onto the host as broken symlinks. The volume persists across container restarts, so subsequent `pnpm install` runs are near-instant.
+A local bind mount (`./data/dev_node_modules`) mounts over `/workspace/node_modules` inside the container. This prevents pnpm's symlinked content-addressable store from leaking onto the host as broken symlinks. The volume persists across container restarts, so subsequent `pnpm install` runs are near-instant.
 
 The dev service has no dependency on the Ghost or MySQL services — it only compiles assets. The compiled files land in `themes/*/assets/built/` via the shared bind mount, where Ghost picks them up and triggers livereload.
 

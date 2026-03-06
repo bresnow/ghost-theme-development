@@ -49,14 +49,28 @@ That's it. Three services start automatically:
 | **theme-one** | Starter theme with blue/teal palette |
 | **theme-two** | Starter theme with warm orange/coral palette |
 
-## Adding a New Theme
+## Bringing Your Own Theme
 
-See [docs/THEME-DEVELOPMENT.md](docs/THEME-DEVELOPMENT.md) for step-by-step instructions.
+Drop your existing Ghost theme into `themes/`, remove any starter themes you don't need, and make sure your theme's `package.json` has these scripts:
+
+```json
+{
+  "scripts": {
+    "dev": "<your-tool> --watch",
+    "build": "<your-tool>",
+    "lint": "npx gscan ."
+  }
+}
+```
+
+The build tool is up to you — Vite, Gulp, Rollup, esbuild, or anything else. The workspace only requires that `dev` runs a watch/rebuild loop and `build` produces a one-shot production build. Output must land wherever your `default.hbs` references assets (typically `assets/built/`).
+
+Then add a bind mount in `docker-compose.yml` for the ghost service and restart. See [docs/THEME-DEVELOPMENT.md](docs/THEME-DEVELOPMENT.md) for full steps.
 
 ## Building for Production
 
 ```bash
-pnpm build:theme-one
+pnpm --filter my-theme build
 # Upload assets/built/ contents or package as a zip for Ghost Admin
 ```
 
