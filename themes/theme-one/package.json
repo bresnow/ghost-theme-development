@@ -1,30 +1,47 @@
 {
-  "name": "theme-one",
+  "name": "bresnow-design-studio",
+  "description": "Ghost theme for Bresnow Design Studio",
   "version": "1.0.0",
-  "private": true,
-  "type": "module",
-  "description": "Theme One — Ghost theme with blue/teal palette",
+  "license": "MIT",
   "author": {
-    "name": "Example Author",
-    "email": "hello@example.com"
-  },
-  "scripts": {
-    "dev": "vite build --watch",
-    "build": "vite build",
-    "lint": "npx gscan ."
+    "name": "Bresnow",
+    "email": "me@bresnow.design"
   },
   "keywords": [
     "ghost-theme"
   ],
+  "type": "module",
+  "scripts": {
+    "start ": "vite",
+    "dev": "vite build --watch --mode development",
+    "build": "vite build",
+    "test": "pnpm dlx gscan@latest . --v6",
+     "lint": "npx gscan ."
+  },
+  "config": {
+    "posts_per_page": 10,
+    "card_assets": true
+  },
   "engines": {
     "ghost": ">=6.0.0"
   },
-  "config": {
-    "posts_per_page": 12
-  },
   "devDependencies": {
-    "vite": "^5.0.0",
-    "postcss": "^8.0.0",
-    "autoprefixer": "^10.0.0"
+    "@fullhuman/postcss-purgecss": "^8.0.0",
+    "@types/node": "^25.3.3",
+    "sharp": "^0.34.5",
+    "svgo": "^4.0.0",
+    "vite": "^7.3.1",
+    "vite-plugin-image-optimizer": "^1.1.9",
+    "vite-plugin-zip-pack": "^1.2.4"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.2.8",
+    "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/vite": "^4.2.1",
+    "alpinejs": "^3.15.8",
+    "lucide": "^0.577.0",
+    "shadcn": "^4.0.2",
+    "tailwindcss": "^4.2.1",
+    "tw-animate-css": "^1.4.0"
   }
 }

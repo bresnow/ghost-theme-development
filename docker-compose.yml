@@ -1,38 +1,17 @@
 services:
-  db:
-    image: mysql:8.0
+  ghost-theme-docker:
+    image: ghost-theme-docker:1.0
+    container_name: ghost-theme-docker
+    privileged: true
     restart: unless-stopped
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-    volumes:
-      - ./data/ghost_db:/var/lib/mysql
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
-      interval: 10s
-      timeout: 5s
-      retries: 10
-      start_period: 30s
-
-  ghost:
-    image: ghost:6-alpine
-    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "2368:2368"
-    depends_on:
-      db:
-        condition: service_healthy
     environment:
       NODE_ENV: development
       url: http://localhost:2368
-      database__client: mysql
-      database__connection__host: db
-      database__connection__port: 3306
-      database__connection__database: ${MYSQL_DATABASE}
-      database__connection__user: ${MYSQL_USER}
-      database__connection__password: ${MYSQL_PASSWORD}
     volumes:
       # Named volumes for persistent data — NOT on /content root
       - ./data/content_data:/var/lib/ghost/content/data
