@@ -1,0 +1,231 @@
+{{!< default}} {{!-- The tag above means: insert everything in this file into the {body} of the default.hbs template
+  --}} {{#is "home" }} 
+  
+  <style>
+  #top{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+  #top::before{
+  content:'';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height:200px;
+  width: 100%;
+  background:linear-gradient(to top,#fff,transparent);
+  z-index: 1000;
+  }
+  #man{
+  top: inherit;
+  bottom: 0;
+  }
+  .section img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  }
+  #text{
+  position: relative;
+  color:white;
+  font-size: 10rem;
+  }
+  #sec{
+  padding:100px;
+  padding-bottom:20px;
+  }
+  #sec h2{
+  font-size: 4rem;
+  margin-bottom: 30px;
+  color:#20496a;
+  }
+  #sec p{
+  font-size: 1.2rem;
+  line-height:2rem;
+  font-weight:300;
+  color:#20496a;
+  }
+
+
+  .parent {
+  padding: 1vh;
+  perspective: 1000px;
+  }
+
+  .card {
+  padding-top: 50px;
+  border-radius: 10px;
+  border: 3px solid #141414;
+  transform-style: preserve-3d;
+  --color: rgb(255, 50, 50, 0.8);
+  background-color: rgb(0, 0, 0);
+  background-image: linear-gradient(45deg, var(--color), transparent 40%),
+  linear-gradient(-90deg, var(--color), transparent 20%);
+  background-color: #141414;
+  width: 100%;
+  box-shadow: rgba(142, 142, 142, 0.3) 0px 30px 30px -10px;
+  transition: all 0.5s ease-in-out;
+  }
+
+  .card:hover {
+  background-position:
+  -100px 100px,
+  -100px 100px;
+  transform: rotate3d(0.5, 1, 0, 5deg);
+  }
+
+  .content-box {
+  background: #FFF;
+  border-radius: 10px 100px 10px 10px;
+  transition: all 0.5s ease-in-out;
+  padding: 60px 25px 25px 25px;
+  transform-style: preserve-3d;
+  }
+
+  .content-box .card-title {
+  display: inline-block;
+  color: #141414;
+  font-size: 25px;
+  font-weight: 900;
+  transition: all 0.5s ease-in-out;
+  transform: translate3d(0px, 0px, 5px);
+  }
+
+  .content-box .card-title:hover {
+  transform: translate3d(0px, 0px, 5px);
+  }
+
+  .content-box .card-content {
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #141414;
+  transition: all 0.5s ease-in-out;
+  transform: translate3d(0px, 0px, 5px);
+  }
+
+  .content-box .card-content:hover {
+  transform: translate3d(0px, 0px, 5px);
+  }
+
+  .content-box .see-more {
+  cursor: pointer;
+  margin-top: 1rem;
+  display: inline-block;
+  font-weight: 900;
+  font-size: 9px;
+  text-transform: uppercase;
+  color: #FFF;
+  border-radius: 5px;
+  background: #e20b24;
+  padding: 0.5rem 0.7rem;
+  transition: all 0.5s ease-in-out;
+  transform: translate3d(0px, 0px, 5px);
+  }
+
+  .content-box .see-more:hover {
+  transform: translate3d(0px, 0px, 5px);
+  }
+
+  .date-box {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background: #141414;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  padding: 10px;
+  transform: translate3d(0px, 0px, 80px);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 17px 10px -10px;
+  }
+
+  .date-box span {
+  display: block;
+  text-align: center;
+  }
+
+  .date-box .month {
+  color: #e20b24;
+  font-size: 9px;
+  font-weight: 700;
+  }
+
+  .date-box .date {
+  font-size: 20px;
+  font-weight: 900;
+  color: #e20b24;
+  }
+
+  </style>
+  {{!-- HEROOOO --}}
+
+  <section class="section pb-200 mt-5 rounded-xl" id="top">
+
+
+
+    <img src="https://bresnow.design/content/images/2026/03/hero_bg.png" id="bg" />
+
+    {{!-- middle subject --}}
+    <img src="https://bresnow.design/content/images/size/w1600/2026/03/middle_face-1.png" id="man" />
+    {{!-- <h1 id="text">{{@site.title}}</h2> --}}
+      <img src="https://bresnow.design/content/images/size/w1600/2026/03/cardLeft.png" id="clouds_2" />
+      {{!-- right --}}
+      <img src="https://bresnow.design/content/images/size/w1600/2026/03/cardRight.png" id="clouds_1" />
+      <img src="https://bresnow.design/content/images/size/w1600/2026/03/clouds_1.png" id="mountain_right" />
+      <img src="https://bresnow.design/content/images/size/w1600/2026/03/clouds_2.png" id="mountain_left" />
+      {{!-- left --}}
+  </section>
+  {{!-- bloopidie boop --}}
+  <div class="bg-white py-24 sm:py-32">
+    <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+      <div
+        class="relative isolate overflow-clip bg-gray-900 px-6 pt-16 shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
+        <div aria-hidden="true"
+          class="absolute right-0 top-0 -z-10 aspect-square w-full max-w-3xl translate-x-3/4 rounded-full bg-red-500/70 blur-[10rem] lg:-top-[40rem] lg:left-1/2 lg:-translate-x-1/2">
+        </div>
+        <div class="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-24 lg:text-start">
+          <h2 class="text-3xl font-semibold tracking-tight text-white sm:text-4xl" style="color: aliceblue;">Site
+            Currently Under Construction</h2>
+          <h5 class="p-3 leading-relaxed" style="color:aliceblue"> Sorting some things out... wont be long now</h5>
+          {{#if @site.description}}
+          <p class="m-8 text-gray-300 leading-relaxed">{{@site.description}}</p>
+          {{/if}}
+          {{> "socials"}}
+          {{!-- buttons --}}
+          <div class="flex justify-center gap-8 mt-4">
+            {{> "button" text="SIGN UP" color="white" href="/#/portal/signup"}}
+            {{> "button" text="SIGN IN" color="white" href="/#/portal/signin"}}
+          </div>
+          {{!-- end buttons --}}
+        </div>
+
+        <div class="relative mt-5 lg:mt-8 lg:h-auto">
+          <img class=" w-[58rem] max-w-none rounded-2xl "
+            src="https://bresnow.design/content/images/2026/03/face_smile.png" alt="dashboard screenshot" />
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ Grid Section - Starts Here 👇 -->
+  <section
+    class="w-full mx-auto grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-10 gap-x-7 mt-[3em] mb-5">
+    {{#get "posts" limit=@config.posts_per_page}}
+    {{#foreach posts limit="3"}}
+    {{> "post-card"}}
+    {{/foreach}}
+    {{/get}}
+  </section>
+
+
+  {{/is}}

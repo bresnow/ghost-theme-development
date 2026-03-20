@@ -1,4 +1,4 @@
-# Ghost Docker Dev
+# Ghost Theme Development Environment
 
 Multi-theme Ghost CMS development environment using Docker, pnpm workspaces, and Vite.
 
@@ -11,28 +11,15 @@ No local Node.js or pnpm required — theme compilation runs inside Docker.
 ## Quick Start
 
 ```bash
-cp .env.example .env
 docker compose up
 # first time setup - http://localhost:2368/ghost
 # then select your local theme in the admin section
 # http://localhost:2368/ghost/#/settings/design/change-theme
 ```
 
-That's it. Three services start automatically:
-- **db** — MySQL 8.0
+It all starts automatically:
 - **ghost** — Ghost 6 at http://localhost:2368
 - **dev** — Node 22 running `pnpm dev` (Vite watch on all themes)
-
-## First-Run Steps (required once)
-
-1. Wait ~30 seconds for MySQL to initialize
-   - Check: `docker compose logs -f db` — wait for "ready for connections"
-2. Wait for the dev service to finish installing dependencies
-   - Check: `docker compose logs -f dev` — wait for "watching for file changes"
-3. Visit http://localhost:2368/ghost
-4. Complete the Ghost setup wizard (create your admin account)
-5. Settings > Design > Change theme > Activate **theme-one**
-6. Visit http://localhost:2368 — your theme is live
 
 ## Development Commands
 
@@ -48,7 +35,6 @@ That's it. Three services start automatically:
 
 | Theme | Description |
 |---|---|
-| **Source** | Ghost's default theme, migrated from Gulp to Vite |
 | **theme-one** | Starter theme with blue/teal palette |
 | **theme-two** | Starter theme with warm orange/coral palette |
 

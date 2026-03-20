@@ -14,18 +14,17 @@ services:
       url: http://localhost:2368
     volumes:
       # Named volumes for persistent data — NOT on /content root
+      - ./data/settings:/var/lib/ghost/content/settings
       - ./data/content_data:/var/lib/ghost/content/data
       - ./data/content_images:/var/lib/ghost/content/images
       - ./data/content_logs:/var/lib/ghost/content/logs
       # Theme bind mounts
-      - ./themes/Source:/var/lib/ghost/content/themes/Source
       - ./themes/theme-one:/var/lib/ghost/content/themes/theme-one
-      - ./themes/theme-two:/var/lib/ghost/content/themes/theme-two
+      - ./themes/bresnow:/var/lib/ghost/content/themes/bresnow
       # Hide node_modules and .git from the container — Ghost's entrypoint
       # runs chown recursively and fails on pnpm symlinks and .git packfiles
-      - /var/lib/ghost/content/themes/Source/node_modules
       - /var/lib/ghost/content/themes/theme-one/node_modules
-      - /var/lib/ghost/content/themes/theme-two/node_modules
+      - /var/lib/ghost/content/themes/bresnow/node_modules
 
   dev:
     image: node:22-alpine

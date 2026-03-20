@@ -1,0 +1,85 @@
+          <main class="bg-white/10 backdrop-blur-xl backdrop-saturate-[180%] border border-white/30 shadow-[0_8px_32px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.4)] my-4 w-full max-w-2xl rounded-3xl text-center p-8 sm:p-16 [&_*]:ease-in-out">
+        <h1 class="text-xl font-bold">Graphic Interface</h1>
+        <p class="text-sm">turning this site into a graphic novel of sorts ... one sec </p>
+
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-[60px_auto_60px] [grid-template-areas:'slider_slider'_'nav-left_nav-right'] sm:[grid-template-areas:'nav-left_slider_nav-right'] gap-2 sm:gap-6
+                [&>button]:rounded-full
+                [&>button]:w-10
+                [&>button]:h-10
+                [&>button]:shrink-0
+                [&>button]:text-gray-600
+                [&>button]:text-2xl
+                [&>button]:transition-all 
+                [&>button]:duration-500
+                [&_button]:relative
+                [&_button]:isolate
+                [&_button]:bg-black
+                sm:[&>button]:mt-8
+                before:[&>button]:absolute
+                before:[&>button]:inset-px
+                before:[&>button]:transition-all
+                before:[&>button]:duration-300
+                before:[&>button]:-z-10 
+                before:[&>button]:rounded-full
+                hover:before:[&>button]:inset-full
+                before:[&>button]:bg-white
+                hover:[&>button]:text-white
+                hover:[&>button]:bg-black
+                hover:[&>button]:border-black
+            ">
+          <button data-slide="prev" class="[grid-area:nav-left] material-symbols-outlined"><svg viewBox="0 0 24 24"
+              fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(180)">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M17 6V18M13.5239 12.7809L8.6247 16.7002C7.96993 17.2241 7 16.7579 7 15.9194V8.08062C7 7.24212 7.96993 6.77595 8.6247 7.29976L13.5239 11.2191C14.0243 11.6195 14.0243 12.3805 13.5239 12.7809Z"
+                  stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </g>
+            </svg></button>
+          <div id="slider" class="[grid-area:slider]">
+            <div id="list-cards" class="grid [grid-template-areas:'stack'] overflow-hidden ">
+              <!-- cards loaded here -->
+            </div>
+          </div>
+          <button data-slide="next" class="[grid-area:nav-right] material-symbols-outlined "><svg viewBox="0 0 24 24"
+              fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M17 6V18M13.5239 12.7809L8.6247 16.7002C7.96993 17.2241 7 16.7579 7 15.9194V8.08062C7 7.24212 7.96993 6.77595 8.6247 7.29976L13.5239 11.2191C14.0243 11.6195 14.0243 12.3805 13.5239 12.7809Z"
+                  stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </g>
+            </svg></button>
+        </div>
+      </main>
+
+      <!-- template - cards -->
+      <template id="tpl-card">
+        <div class="tmpcard [grid-area:stack] opacity-0">
+          <blockquote class="bg-black text-white rounded-md p-6 text-sm transition-all duration-500 scale-0 relative isolate
+                    before:absolute
+                    before:bg-black
+                    before:w-4
+                    before:h-4
+                    before:rotate-45
+                    before:-bottom-2
+                    before:left-2/4
+                    before:-translate-x-2/4
+                    before:-z-10
+                    before:-translate-y-full
+                    before:transition
+                    before:duration-500
+                    before:delay-500
+                "></blockquote>
+          <div
+            class="details text-sm translate-y-[150px] transition-all duration-500 flex flex-col items-center gap-2 mt-6">
+            <img review-img class="w-50 object-cover rounded" alt="">
+            <div class="">
+              <p review-name class="text-sm font-bold"></p>
+              <p review-role class="text-xs"></p>
+            </div>
+          </div>
+        </div>
+      </template>

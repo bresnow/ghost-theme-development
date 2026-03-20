@@ -12,11 +12,10 @@
   ],
   "type": "module",
   "scripts": {
-    "start ": "vite",
-    "dev": "vite build --watch --mode development",
-    "build": "vite build",
+    "dev": "gulp",
+    "build": "gulp zip",
     "test": "pnpm dlx gscan@latest . --v6",
-     "lint": "npx gscan ."
+    "lint": "npx gscan ."
   },
   "config": {
     "posts_per_page": 10,
@@ -30,9 +29,21 @@
     "@types/node": "^25.3.3",
     "sharp": "^0.34.5",
     "svgo": "^4.0.0",
-    "vite": "^7.3.1",
-    "vite-plugin-image-optimizer": "^1.1.9",
-    "vite-plugin-zip-pack": "^1.2.4"
+    "@tryghost/shared-theme-assets": "2.5.2",
+    "autoprefixer": "10.4.27",
+    "beeper": "2.1.0",
+    "cssnano": "7.1.2",
+    "gscan": "5.2.5",
+    "gulp": "5.0.1",
+    "gulp-concat": "2.6.1",
+    "gulp-livereload": "4.0.2",
+    "gulp-postcss": "10.0.0",
+    "gulp-uglify": "3.0.2",
+    "gulp-zip": "5.1.0",
+    "ordered-read-streams": "2.0.0",
+    "postcss": "8.5.8",
+    "postcss-easy-import": "4.0.0",
+    "pump": "3.0.4"
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.2.8",

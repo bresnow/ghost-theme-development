@@ -1,0 +1,57 @@
+  .parent {
+  padding: 1vh;
+  perspective: 1000px;
+  }
+
+  .card {
+  padding-top: 50px;
+  border-radius: 10px;
+  border: 3px solid #141414;
+  transform-style: preserve-3d;
+  --color: rgb(255, 50, 50, 0.8);
+  background-color: rgb(0, 0, 0);
+  background-image: linear-gradient(45deg, var(--color), transparent 40%),
+  linear-gradient(-90deg, var(--color), transparent 20%);
+  background-color: #141414;
+  width: 100%;
+  box-shadow: rgba(142, 142, 142, 0.3) 0px 30px 30px -10px;
+  transition: all 0.5s ease-in-out;
+  }
+
+  .card:hover {
+  background-position:
+  -100px 100px,
+  -100px 100px;
+  transform: rotate3d(0.5, 1, 0, 5deg);
+  }
+
+ 
+
+  .date-box {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background: #141414;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  padding: 10px;
+  transform: translate3d(0px, 0px, 80px);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 17px 10px -10px;
+  }
+
+  .date-box span {
+  display: block;
+  text-align: center;
+  }
+
+  .date-box .month {
+  color: #e20b24;
+  font-size: 9px;
+  font-weight: 700;
+  }
+
+  .date-box .date {
+  font-size: 20px;
+  font-weight: 900;
+  color: #e20b24;
+  }

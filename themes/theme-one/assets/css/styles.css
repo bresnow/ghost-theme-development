@@ -3,6 +3,7 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/inter";
+@import "./jack.css";
 
 /* Add file to watch for changes in tailwind css */
 @source '../**/*.hbs';
@@ -165,3 +166,32 @@
      @apply text-sm text-center text-muted mt-2;
   }
 }
+
+
+   #pambutton {
+            text-decoration: none;
+            font-size: 25px;
+            border: none;
+            background: none;
+            font-weight: 600;
+            font-family: "Poppins", sans-serif;
+        }
+
+        #pambutton::before {
+            margin-left: auto;
+        }
+
+        #pambutton::after,
+        #pambutton::before {
+            content: "";
+            width: 0%;
+            height: 2px;
+            background: #f44336;
+            display: block;
+            transition: 0.5s;
+        }
+
+        #pambutton:hover::after,
+        #pambutton:hover::before {
+            width: 100%;
+        }

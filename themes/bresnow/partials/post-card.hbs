@@ -1,0 +1,72 @@
+{{!< button}} {{!-- <div class="w-full bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+    <a href="{{url}}">
+        <img src={{ feature_image }} alt={{title}} class=" w-full object-cover rounded-t-xl" />
+        <div class="px-4 py-3 w-full">
+            <span class="text-gray-400 mr-3 uppercase text-xs">{{primary_tag}}</span>
+            <h2 class="text-lg font-bold text-black truncate block capitalize">{{title}}</h2>
+            <div class="flex items-center">
+                <p class="text-lg font-semibold text-black cursor-auto my-3">{{excerpt characters="240"}}</p>
+            </div>
+        </div>
+    </a>
+    </div> --}}
+    {{!-- start CARD CARD --}}
+    <div class=" lg:w-full md:w-1/2 w-full">
+        <div class="parent">
+            <div class="card">
+                <div class="content-box">
+                    <a class="mt-8" href={{url}}>
+                        <img src={{ feature_image }} alt={{title}} class=" w-full object-cover rounded-t-xl" />
+                    </a>
+                    <span class="card-title">{{title}}</span>
+                    <p class="card-content mb-3">
+                        {{ excerpt characters="240" }}
+                    </p>
+                    <a href={{url}}>
+                        <button class="mt-4" id="pambutton">
+                            READ MORE
+                        </button>
+                    </a>
+                </div>
+                <div class="date-box">
+
+                    <span class="month">{{date format="MM"}}</span>
+                    <span class="date">{{date format="YYYY"}}</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {{!-- end CARD CARD --}}
+    {{!-- <div
+        class="relative rounded-lg -skew-x-6 -translate-y-2 -translate-y-6 hover:-translate-y-1 hover:-translate-x-0 hover:skew-x-0 duration-500 w-full h-full p-2 bg-neutral-50 card-compact hover:bg-base-200 transition-all duration-200 [box-shadow:12px_12px] hover:[box-shadow:4px_4px]">
+        <figure class="w-full h-full">
+            {{#if feature_image}}
+            <img alt="change to a img tag"
+                class="bg-neutral-800 text-neutral-50 min-h-full rounded-lg border border-opacity-5"
+                src="{{img_url feature_image size=" l"}}" alt="{{title}}">
+            </img>
+
+            {{/if}}
+        </figure>
+        <div class="absolute text-neutral-50 bottom-4 left-0 px-4">
+            <span class="font-bold">{{title}}</span>
+            <p class="text-sm opacity-60 line-clamp-2">
+                {{excerpt}}
+            </p>
+        </div>
+    </div> --}}
+    {{!--
+    <article class="post-card {{#has number=" nth:3"}}post-card-large{{/has}} {{post_class}}">
+        <a class="post-card-link" href="{{url}}">
+            {{#if feature_image}}
+            <img srcset="{{img_url feature_image size=" s"}} 300w, {{img_url feature_image size="m" }} 600w, {{img_url
+                feature_image size="l" }} 1200w, {{img_url feature_image size="xl" }} 2000w, {{img_url feature_image}}"
+                sizes="(min-width: 701px) {{#has number=" nth:3"}}94vw{{else}}calc(94vw / 2){{/has}}, 88vw"
+                src="{{img_url feature_image size=" l"}}" alt="{{title}}">
+            {{/if}}
+            <div class="post-card-content">
+                <h2 class="post-card-title">{{title}}</h2>
+            </div>
+        </a>
+    </article> --}}
